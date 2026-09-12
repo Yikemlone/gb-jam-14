@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c5mq38png5cr2"]
+
+[ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="1_is5uf"]
+[ext_resource type="Script" uid="uid://6yfxw5g8g83s" path="res://Scenes/main_menu_root.gd" id="1_ki4da"]
+
+[node name="MainMenuRoot" type="Control" unique_id=625349665]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ki4da")
+
+[node name="GameName" type="Label" parent="." unique_id=1592522052]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 143.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_is5uf")
+text = "Off the top"
+horizontal_alignment = 1
+
+[node name="StartGameButton" type="Button" parent="." unique_id=422347336]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 34.0
+offset_right = 129.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("1_is5uf")
+text = "Start"
+
+[node name="CreditsButton" type="Button" parent="." unique_id=880291169]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 69.0
+offset_right = 129.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("1_is5uf")
+text = "Credits"
+
+[node name="ExitGameButton" type="Button" parent="." unique_id=1370952221]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 103.0
+offset_right = 129.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("1_is5uf")
+text = "Exit"
+
+[node name="Background" type="ColorRect" parent="." unique_id=456074833]
+z_index = -1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+mouse_filter = 2
+
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ExitGameButton" to="." method="_on_exit_game_button_pressed"]

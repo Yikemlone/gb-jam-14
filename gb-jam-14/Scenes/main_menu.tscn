@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c78w70o7mjj0o"]
+
+[ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="1_28flt"]
+
+[node name="MainMenu" type="Control" unique_id=455418554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=637195498]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -3.0
+offset_right = 57.000008
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_28flt")
+text = "Main menu"
+horizontal_alignment = 1
