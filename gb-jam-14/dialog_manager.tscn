@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cjo6nl52mb55g"]
+
+[ext_resource type="Script" uid="uid://dbyt70pay8bv8" path="res://Scripts/canvas_layer.gd" id="1_lohcx"]
+[ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="2_g0nxy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h8jd1"]
+font = ExtResource("2_g0nxy")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogManager" type="CanvasLayer" unique_id=1844141881]
+script = ExtResource("1_lohcx")
+
+[node name="DialogBox" type="Control" parent="." unique_id=1570719560]
+custom_minimum_size = Vector2(90, 80)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_bottom = 80.0
+grow_horizontal = 0
+pivot_offset = Vector2(119, 101)
+
+[node name="ColorRect" type="ColorRect" parent="DialogBox" unique_id=200316649]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(28, 22)
+
+[node name="DialogText" type="Label" parent="DialogBox" unique_id=2065004103]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(156, 100)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+label_settings = SubResource("LabelSettings_h8jd1")
+vertical_alignment = 1
+autowrap_mode = 3

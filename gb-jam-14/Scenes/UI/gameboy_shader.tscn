@@ -11,7 +11,6 @@ shader_parameter/colour3 = Color(0.059, 0.22, 0.059, 1)
 
 [node name="Gameboy Shader" type="ColorRect" unique_id=949928195]
 top_level = true
-z_index = 4096
 material = SubResource("ShaderMaterial_wa718")
 anchors_preset = -1
 anchor_left = -0.495

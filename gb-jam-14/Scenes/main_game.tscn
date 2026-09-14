@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cxvrxr0ioo5ip"]
 
-[ext_resource type="Script" uid="uid://c43axmokecoue" path="res://Scenes/main_game.gd" id="1_0e3vx"]
-[ext_resource type="PackedScene" uid="uid://snr34p2tj46r" path="res://Scenes/gameboy_shader.tscn" id="1_l756w"]
-[ext_resource type="PackedScene" uid="uid://cejyokk2ukhyt" path="res://Scenes/level.tscn" id="2_mgc0q"]
-[ext_resource type="PackedScene" uid="uid://c5mq38png5cr2" path="res://Scenes/main_menu_root.tscn" id="2_pu3va"]
-[ext_resource type="PackedScene" uid="uid://kmm7668m6b7c" path="res://Scenes/splash_screen.tscn" id="3_6j5ir"]
+[ext_resource type="Script" uid="uid://c43axmokecoue" path="res://Scripts/main_game.gd" id="1_0e3vx"]
+[ext_resource type="PackedScene" uid="uid://snr34p2tj46r" path="res://Scenes/UI/gameboy_shader.tscn" id="1_l756w"]
+[ext_resource type="Script" uid="uid://iaecoupqi1b2" path="res://Scenes/world.gd" id="2_bb2iq"]
+[ext_resource type="PackedScene" uid="uid://cejyokk2ukhyt" path="res://Scenes/Gameplay/level.tscn" id="2_mgc0q"]
+[ext_resource type="PackedScene" uid="uid://c5mq38png5cr2" path="res://Scenes/UI/main_menu_root.tscn" id="2_pu3va"]
+[ext_resource type="PackedScene" uid="uid://kmm7668m6b7c" path="res://Scenes/UI/splash_screen.tscn" id="3_6j5ir"]
 
 [node name="MainGame" type="Node" unique_id=1156436065]
 process_mode = 3
@@ -12,6 +13,7 @@ script = ExtResource("1_0e3vx")
 
 [node name="World" type="Node2D" parent="." unique_id=1652773601]
 process_mode = 1
+script = ExtResource("2_bb2iq")
 
 [node name="Level" parent="World" unique_id=251028170 instance=ExtResource("2_mgc0q")]
 
@@ -21,6 +23,7 @@ process_mode = 1
 position = Vector2(0, -1)
 
 [node name="SplashScreenLayer" type="CanvasLayer" parent="." unique_id=1174333949]
+process_mode = 3
 
 [node name="splash_screen" parent="SplashScreenLayer" unique_id=547473684 instance=ExtResource("3_6j5ir")]
 
@@ -75,6 +78,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GameBoyShaderLayer" type="CanvasLayer" parent="." unique_id=1600452198]
+process_mode = 3
 layer = 128
 
 [node name="Gameboy Shader" parent="GameBoyShaderLayer" unique_id=901218074 instance=ExtResource("1_l756w")]
@@ -85,3 +89,5 @@ anchor_bottom = 1.0
 offset_left = 0.0
 offset_top = 0.0
 mouse_filter = 2
+
+[editable path="World/Level"]

@@ -2,10 +2,9 @@ extends Node
 
 @onready var main_menu_root: Control = $MainMenuLayer/MainMenuRoot
 @onready var splash_screen: Node2D = $SplashScreenLayer/splash_screen
-@onready var level_root: Node2D = $World/Level
+@onready var world: Node2D = $World
 
-var current_level: Node = null
-
+const FIRST_LEVEL_LOAD = "encounter"
 
 func _ready() -> void:
 	main_menu_root.hide()
@@ -20,15 +19,4 @@ func _on_splash_finished() -> void:
 
 func _on_game_start() -> void:
 	main_menu_root.hide()
-
-	# Deffiently can be improved for more dynamic level loading options, but it'll do
-	var level_scene = preload("res://Scenes/counter.tscn")
-	load_level(level_scene)
-
-
-func load_level(level_scene: PackedScene) -> void:
-	if current_level:
-		current_level.queue_free()
-
-	current_level = level_scene.instantiate()
-	level_root.add_child(current_level)
+	world.load_level(FIRST_LEVEL_LOAD)

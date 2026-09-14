@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://xnapqe18wu4l"]
+
+[ext_resource type="PackedScene" uid="uid://cjo6nl52mb55g" path="res://dialog_manager.tscn" id="1_8d7lg"]
+[ext_resource type="Script" uid="uid://cd0nn482p1s3k" path="res://Scenes/Gameplay/encounter.gd" id="1_xhf1n"]
+
+[node name="Encounter" type="Node2D" unique_id=1163178193]
+script = ExtResource("1_xhf1n")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1667365197]
+z_index = -4096
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="DialogManager" parent="." unique_id=1844141881 instance=ExtResource("1_8d7lg")]
