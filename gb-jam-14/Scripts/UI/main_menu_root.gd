@@ -41,6 +41,7 @@ func _update_hand_position(button: Button):
 		button_rect.position.y + (button_rect.size.y - hand_icon.size.y) / 2
 	)
 
+
 func _on_start_game_button_pressed() -> void:
 	print("Changing level")
 	start_game.emit()

@@ -1,57 +1,59 @@
 [gd_scene format=3 uid="uid://dgiw3jjhteir6"]
 
-[ext_resource type="Script" uid="uid://duw4srw66dq2b" path="res://Scripts/desk.gd" id="1_orf8l"]
-[ext_resource type="Texture2D" uid="uid://b4ivu7y27bdkx" path="res://icon.svg" id="2_ou584"]
-[ext_resource type="Texture2D" uid="uid://bj4vjiwxn8tta" path="res://Assets/Sprites/gb-jam-13-splash.png" id="3_ou584"]
+[ext_resource type="Script" uid="uid://duw4srw66dq2b" path="res://Scripts/Levels/desk.gd" id="1_3b01l"]
+[ext_resource type="Texture2D" uid="uid://b4ivu7y27bdkx" path="res://icon.svg" id="2_jidcf"]
+[ext_resource type="Texture2D" uid="uid://w072qwxtk0qq" path="res://Assets/Sprites/hand-sprite.png" id="3_bnixx"]
 
 [node name="Desk" type="Node2D" unique_id=839345135]
-script = ExtResource("1_orf8l")
+script = ExtResource("1_3b01l")
 
 [node name="Background" type="ColorRect" parent="." unique_id=435693798]
 z_index = -4096
 offset_right = 160.0
 offset_bottom = 144.0
 
-[node name="CashRegisterButton" type="TextureButton" parent="." unique_id=514150978]
+[node name="Buttons" type="Node2D" parent="." unique_id=667675849]
+
+[node name="CashRegisterButton" type="TextureButton" parent="Buttons" unique_id=514150978]
 offset_left = 61.0
 offset_top = 112.0
 offset_right = 189.0
 offset_bottom = 240.0
 scale = Vector2(0.24000001, 0.24000001)
-texture_normal = ExtResource("2_ou584")
+texture_normal = ExtResource("2_jidcf")
 stretch_mode = 0
 
-[node name="CustomerBookButton" type="TextureButton" parent="." unique_id=1833039539]
+[node name="CustomerBookButton" type="TextureButton" parent="Buttons" unique_id=1833039539]
 offset_left = 3.0
 offset_top = 74.0
 offset_right = 131.0
 offset_bottom = 202.0
 scale = Vector2(0.19999999, 0.19999999)
-texture_normal = ExtResource("2_ou584")
+texture_normal = ExtResource("2_jidcf")
 
-[node name="BankStatementButton" type="TextureButton" parent="." unique_id=1437339178]
+[node name="BankStatementButton" type="TextureButton" parent="Buttons" unique_id=1437339178]
 offset_left = 6.0
 offset_top = 119.0
 offset_right = 134.0
 offset_bottom = 247.0
 scale = Vector2(0.16000003, 0.16000003)
-texture_normal = ExtResource("2_ou584")
+texture_normal = ExtResource("2_jidcf")
 
-[node name="CashButton" type="TextureButton" parent="." unique_id=1484095360]
+[node name="CashButton" type="TextureButton" parent="Buttons" unique_id=1484095360]
 offset_left = 61.0
 offset_top = 72.0
 offset_right = 189.0
 offset_bottom = 200.0
 scale = Vector2(0.21764706, 0.21764706)
-texture_normal = ExtResource("2_ou584")
+texture_normal = ExtResource("2_jidcf")
 
-[node name="BellButton" type="TextureButton" parent="." unique_id=622114255]
+[node name="BellButton" type="TextureButton" parent="Buttons" unique_id=622114255]
 offset_left = 25.0
 offset_top = 10.0
 offset_right = 153.0
 offset_bottom = 138.0
 scale = Vector2(0.2018698, 0.2018698)
-texture_normal = ExtResource("2_ou584")
+texture_normal = ExtResource("2_jidcf")
 
 [node name="CashRegister" type="CanvasLayer" parent="." unique_id=1733545451]
 
@@ -70,7 +72,7 @@ offset_top = 37.0
 offset_right = -13.0
 offset_bottom = 56.0
 grow_horizontal = 0
-texture = ExtResource("3_ou584")
+texture = ExtResource("3_bnixx")
 expand_mode = 1
 
-[connection signal="pressed" from="BellButton" to="." method="_on_bell_button_pressed"]
+[connection signal="pressed" from="Buttons/BellButton" to="." method="_on_bell_button_pressed"]

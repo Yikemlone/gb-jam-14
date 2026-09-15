@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjo6nl52mb55g"]
 
-[ext_resource type="Script" uid="uid://dbyt70pay8bv8" path="res://Scripts/canvas_layer.gd" id="1_lohcx"]
+[ext_resource type="Script" uid="uid://dbyt70pay8bv8" path="res://Scripts/UI/dialog_manager.gd" id="1_lohcx"]
 [ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="2_g0nxy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h8jd1"]

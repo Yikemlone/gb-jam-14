@@ -19,4 +19,4 @@ func _on_splash_finished() -> void:
 
 func _on_game_start() -> void:
 	main_menu_root.hide()
-	world.load_level(FIRST_LEVEL_LOAD)
+	world.start_game()

@@ -2,21 +2,20 @@ extends Node2D
 
 signal finished(next_level: String)
 
-@onready var bell_button: TextureButton = $BellButton
-@onready var cash_button: TextureButton = $CashButton
-@onready var bank_statement_button: TextureButton = $BankStatementButton
-@onready var customer_book_button: TextureButton = $CustomerBookButton
-@onready var cash_register_button: TextureButton = $CashRegisterButton
-
 @onready var hand_icon: TextureRect = $HandIcon
+@onready var cash_register_button: TextureButton = $Buttons/CashRegisterButton
+@onready var customer_book_button: TextureButton = $Buttons/CustomerBookButton
+@onready var bank_statement_button: TextureButton = $Buttons/BankStatementButton
+@onready var cash_button: TextureButton = $Buttons/CashButton
+@onready var bell_button: TextureButton = $Buttons/BellButton
 
 const HAND_ICON_OFFSET := 4
 
 @onready var buttons: Array[TextureButton] = [
 	bell_button,
-	cash_button,
-	bank_statement_button,
 	customer_book_button,
+	bank_statement_button,
+	cash_button,
 	cash_register_button
 ]
 

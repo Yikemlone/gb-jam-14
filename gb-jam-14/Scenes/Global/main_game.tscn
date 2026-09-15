@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://cxvrxr0ioo5ip"]
 
-[ext_resource type="Script" uid="uid://c43axmokecoue" path="res://Scripts/main_game.gd" id="1_0e3vx"]
-[ext_resource type="PackedScene" uid="uid://snr34p2tj46r" path="res://Scenes/UI/gameboy_shader.tscn" id="1_l756w"]
-[ext_resource type="Script" uid="uid://iaecoupqi1b2" path="res://Scenes/world.gd" id="2_bb2iq"]
-[ext_resource type="PackedScene" uid="uid://cejyokk2ukhyt" path="res://Scenes/Gameplay/level.tscn" id="2_mgc0q"]
-[ext_resource type="PackedScene" uid="uid://c5mq38png5cr2" path="res://Scenes/UI/main_menu_root.tscn" id="2_pu3va"]
-[ext_resource type="PackedScene" uid="uid://kmm7668m6b7c" path="res://Scenes/UI/splash_screen.tscn" id="3_6j5ir"]
+[ext_resource type="Script" uid="uid://c43axmokecoue" path="res://Scripts/Global/main_game.gd" id="1_bo14f"]
+[ext_resource type="Script" uid="uid://iaecoupqi1b2" path="res://Scripts/Levels/world.gd" id="2_fosh4"]
+[ext_resource type="PackedScene" uid="uid://cejyokk2ukhyt" path="res://Scenes/Levels/level.tscn" id="3_2n6he"]
+[ext_resource type="PackedScene" uid="uid://kmm7668m6b7c" path="res://Scenes/Startup/splash_screen.tscn" id="4_0jfgy"]
+[ext_resource type="Script" uid="uid://ccgcnqtq02nlu" path="res://Scripts/Entities/entities.gd" id="4_fosh4"]
+[ext_resource type="PackedScene" uid="uid://c5mq38png5cr2" path="res://Scenes/UI/main_menu_root.tscn" id="5_cjefw"]
+[ext_resource type="PackedScene" uid="uid://snr34p2tj46r" path="res://Scenes/UI/gameboy_shader.tscn" id="6_gvipp"]
 
 [node name="MainGame" type="Node" unique_id=1156436065]
 process_mode = 3
-script = ExtResource("1_0e3vx")
+script = ExtResource("1_bo14f")
 
 [node name="World" type="Node2D" parent="." unique_id=1652773601]
 process_mode = 1
-script = ExtResource("2_bb2iq")
+script = ExtResource("2_fosh4")
 
-[node name="Level" parent="World" unique_id=251028170 instance=ExtResource("2_mgc0q")]
+[node name="Level" parent="World" unique_id=251028170 instance=ExtResource("3_2n6he")]
 
 [node name="Entities" type="Node2D" parent="World" unique_id=320668505]
+script = ExtResource("4_fosh4")
 
 [node name="Effects" type="Node2D" parent="World" unique_id=1694078972]
 position = Vector2(0, -1)
@@ -25,7 +27,7 @@ position = Vector2(0, -1)
 [node name="SplashScreenLayer" type="CanvasLayer" parent="." unique_id=1174333949]
 process_mode = 3
 
-[node name="splash_screen" parent="SplashScreenLayer" unique_id=547473684 instance=ExtResource("3_6j5ir")]
+[node name="splash_screen" parent="SplashScreenLayer" unique_id=547473684 instance=ExtResource("4_0jfgy")]
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=1902550203]
 process_mode = 1
@@ -54,7 +56,7 @@ offset_bottom = 40.0
 process_mode = 1
 layer = 40
 
-[node name="MainMenuRoot" parent="MainMenuLayer" unique_id=625349665 instance=ExtResource("2_pu3va")]
+[node name="MainMenuRoot" parent="MainMenuLayer" unique_id=625349665 instance=ExtResource("5_cjefw")]
 visible = false
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1118571183]
@@ -81,7 +83,7 @@ offset_bottom = 40.0
 process_mode = 3
 layer = 128
 
-[node name="Gameboy Shader" parent="GameBoyShaderLayer" unique_id=901218074 instance=ExtResource("1_l756w")]
+[node name="Gameboy Shader" parent="GameBoyShaderLayer" unique_id=901218074 instance=ExtResource("6_gvipp")]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

@@ -11,11 +11,9 @@ var is_dialog_active: bool = false
 
 func _ready() -> void:
 	dialog_box.visible = false
-	start_dialog(["This is the live dialog test", "This is a second line."])
 
 
 func start_dialog(lines: Array[String]) -> void:
-	#get_tree().paused = true # test how this works
 	dialog_lines = lines
 	current_line_index = 0 
 	is_dialog_active = true
@@ -36,9 +34,6 @@ func advance_dialog():
 		current_line_index += 1
 		dialog_text.text = dialog_lines[current_line_index]
 	else:
-		#get_tree().paused = false
 		is_dialog_active = false
 		dialog_box.visible = false
-		# So we should advance to the desk here
 		dialog_complete.emit()
-	
