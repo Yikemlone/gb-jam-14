@@ -13,8 +13,14 @@
 font = ExtResource("6_g0nxy")
 font_size = 8
 
+
 [node name="Desk" type="Node2D" unique_id=839345135]
 script = ExtResource("1_3b01l")
+
+[node name="Background2" type="TextureRect" parent="." unique_id=1439134748]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_bnixx")
 
 [node name="Background" type="ColorRect" parent="." unique_id=435693798]
 z_index = -4096
@@ -62,6 +68,7 @@ offset_right = 31.0
 offset_bottom = 76.0
 texture_normal = ExtResource("3_jidcf")
 stretch_mode = 5
+
 
 [node name="CashRegister" type="CanvasLayer" parent="." unique_id=1733545451]
 
