@@ -1,6 +1,6 @@
 class_name NPCContext
 
 enum Type {
-	ENCOUNTER,
+	HIDDEN,
 	DESK
 }

@@ -9,7 +9,7 @@ extends Node2D
 	"Here is my account book."
 ]
 
-var context: NPCContext.Type = NPCContext.Type.ENCOUNTER
+var context: NPCContext.Type = NPCContext.Type.HIDDEN
 
 
 func set_context(new_context: NPCContext.Type) -> void:
@@ -20,10 +20,10 @@ func set_context(new_context: NPCContext.Type) -> void:
 
 func _update_visuals() -> void:
 	match context:
-		NPCContext.Type.ENCOUNTER:
-			sprite.visible = true
-			print("NPC sprite visible")
-
-		NPCContext.Type.DESK:
+		NPCContext.Type.HIDDEN:
 			sprite.visible = false
 			print("NPC sprite hidden")
+
+		NPCContext.Type.DESK:
+			sprite.visible = true
+			print("NPC sprite visible")

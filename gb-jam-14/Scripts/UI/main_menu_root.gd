@@ -18,8 +18,27 @@ func _ready():
 		button.focus_entered.connect(_on_button_focus.bind(button))
 		button.resized.connect(_on_button_resized.bind(button))
 
-	# Assuming we have the array above always beinging with the start button this should be fine.
-	buttons[0].grab_focus() 
+	# Don't grab focus while hidden (menu starts hidden under the splash).
+	hand_icon.visible = false
+	for button in buttons:
+		button.focus_mode = Control.FOCUS_NONE
+
+
+func show_menu() -> void:
+	show()
+	hand_icon.visible = false
+	for button in buttons:
+		button.focus_mode = Control.FOCUS_ALL
+	buttons[0].grab_focus()
+
+
+func hide_menu() -> void:
+	var focused := get_viewport().gui_get_focus_owner()
+	if focused != null and buttons.has(focused):
+		focused.release_focus()
+	for button in buttons:
+		button.focus_mode = Control.FOCUS_NONE
+	hide()
 
 
 func _on_button_focus(button: Button):
@@ -43,6 +62,9 @@ func _update_hand_position(button: Button):
 
 
 func _on_start_game_button_pressed() -> void:
+	# Ignore presses while hidden
+	if not visible:
+		return
 	print("Changing level")
 	start_game.emit()
 

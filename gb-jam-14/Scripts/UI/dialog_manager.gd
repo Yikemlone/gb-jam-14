@@ -15,22 +15,26 @@ func _ready() -> void:
 
 func start_dialog(lines: Array[String]) -> void:
 	dialog_lines = lines
-	current_line_index = 0 
+	current_line_index = 0
 	is_dialog_active = true
+	# FIXED: Unhide the layer itself — desk.tscn instanced it with visible=false,
+	# FIXED: which kept the box hidden even though the box was set visible below.
+	visible = true
 	dialog_box.visible = true
 	dialog_text.text = dialog_lines[current_line_index]
 
 
-func _input(event ):
-	if not dialog_box:
+func _input(event: InputEvent) -> void:
+	if not is_dialog_active:
 		return
 	if event.is_action_pressed("ui_accept"):
 		advance_dialog()
-		
 
 
-func advance_dialog():
-	if current_line_index < dialog_lines.size() -1:
+func advance_dialog() -> void:
+	if not is_dialog_active:
+		return
+	if current_line_index < dialog_lines.size() - 1:
 		current_line_index += 1
 		dialog_text.text = dialog_lines[current_line_index]
 	else:

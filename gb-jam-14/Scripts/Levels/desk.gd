@@ -2,6 +2,8 @@ extends Node2D
 
 signal finished(next_level: String)
 
+@onready var dialog_manager: CanvasLayer = $DialogManager
+@onready var timer_label: Label = $TimerLabel
 @onready var hand_icon: TextureRect = $HandIcon
 @onready var cash_register_button: TextureButton = $Buttons/CashRegisterButton
 @onready var customer_book_button: TextureButton = $Buttons/CustomerBookButton
@@ -10,6 +12,10 @@ signal finished(next_level: String)
 @onready var bell_button: TextureButton = $Buttons/BellButton
 
 const HAND_ICON_OFFSET := 4
+
+var npc: Node2D
+var world
+var _dialog_started: bool = false
 
 @onready var buttons: Array[TextureButton] = [
 	bell_button,
@@ -20,12 +26,30 @@ const HAND_ICON_OFFSET := 4
 ]
 
 
+func setup(npc_instance: Node2D) -> void:
+	npc = npc_instance
+
+
 func _ready() -> void:
+	if world:
+		timer_label.text = world.get_shift_text(world.day_timer)
+		world.time_updated.connect(_on_time_updated)
+
 	for button in buttons:
 		button.focus_entered.connect(_on_button_focus.bind(button))
 		button.resized.connect(_on_button_resized.bind(button))
+		button.disabled = true
 
-	# Set vertical focus navigation
+	_set_vertical_focus_navigation()
+	dialog_manager.dialog_complete.connect(_on_dialog_complete)
+	call_deferred("_start_dialog")
+
+
+func _on_time_updated(text: String) -> void:
+	timer_label.text = text
+
+
+func _set_vertical_focus_navigation() -> void:
 	for i in range(buttons.size()):
 		if i > 0:
 			buttons[i].focus_neighbor_top = buttons[i - 1].get_path()
@@ -33,11 +57,24 @@ func _ready() -> void:
 		if i < buttons.size() - 1:
 			buttons[i].focus_neighbor_bottom = buttons[i + 1].get_path()
 
-	call_deferred("_set_initial_focus")
+
+func _start_dialog() -> void:
+	if _dialog_started:
+		return
+	_dialog_started = true
+
+	if npc == null:
+		push_error("Desk started without an NPC.")
+		dialog_manager.start_dialog(["..."])
+		return
+
+	dialog_manager.start_dialog(npc.dialogue)
 
 
-func _set_initial_focus() -> void:
-	bell_button.grab_focus()
+func _on_dialog_complete() -> void:
+	for button in buttons:
+		button.disabled = false
+	cash_register_button.grab_focus()
 
 
 func _on_button_focus(button: TextureButton) -> void:
@@ -61,4 +98,4 @@ func _update_hand_position(button: TextureButton) -> void:
 
 func _on_bell_button_pressed() -> void:
 	print("BELL PRESSED")
-	finished.emit("encounter")
+	finished.emit("next_customer")

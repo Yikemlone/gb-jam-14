@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bcsidfbnpxuuc"]
+
+[ext_resource type="Script" uid="uid://xatorvo7g6ll" path="res://Scripts/Levels/game_over.gd" id="1_go"]
+[ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="2_0yfxd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2g1x"]
+font = ExtResource("2_0yfxd")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Node2D" unique_id=2143034403]
+script = ExtResource("1_go")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1840220978]
+z_index = -4096
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.627451, 0.627451, 0.54509807, 1)
+
+[node name="ResultLabel" type="Label" parent="." unique_id=1167054717]
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 60.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
+[node name="TotalsLabel" type="Label" parent="." unique_id=1637743209]
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 78.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1

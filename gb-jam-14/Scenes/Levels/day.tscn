@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://xnapqe18wu4l"]
+
+[ext_resource type="Script" uid="uid://cd0nn482p1s3k" path="res://Scripts/Levels/day.gd" id="1_jehmt"]
+[ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="2_0yfxd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2g1x"]
+font = ExtResource("2_0yfxd")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="DayStart" type="Node2D" unique_id=1163178193]
+script = ExtResource("1_jehmt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1667365197]
+z_index = -4096
+offset_right = 160.0
+offset_bottom = 144.0
+color = Color(0.627451, 0.627451, 0.54509807, 1)
+
+[node name="DayLabel" type="Label" parent="." unique_id=2020153445]
+offset_right = 160.0
+offset_bottom = 20.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
+[node name="RegisterLabel" type="Label" parent="." unique_id=1844509764]
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 54.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
+[node name="TargetLabel" type="Label" parent="." unique_id=99033777]
+offset_top = 54.0
+offset_right = 160.0
+offset_bottom = 68.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
+[node name="VerdictLabel" type="Label" parent="." unique_id=952921246]
+visible = false
+offset_top = 86.0
+offset_right = 160.0
+offset_bottom = 100.0
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
+[node name="StartHint" type="Label" parent="." unique_id=5575115]
+offset_top = 120.0
+offset_right = 160.0
+offset_bottom = 134.0
+text = "PRESS START"
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1

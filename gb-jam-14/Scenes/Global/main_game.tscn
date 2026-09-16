@@ -21,25 +21,10 @@ script = ExtResource("2_fosh4")
 [node name="Entities" type="Node2D" parent="World" unique_id=320668505]
 script = ExtResource("4_fosh4")
 
-[node name="Effects" type="Node2D" parent="World" unique_id=1694078972]
-position = Vector2(0, -1)
-
 [node name="SplashScreenLayer" type="CanvasLayer" parent="." unique_id=1174333949]
 process_mode = 3
 
 [node name="splash_screen" parent="SplashScreenLayer" unique_id=547473684 instance=ExtResource("4_0jfgy")]
-
-[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1902550203]
-process_mode = 1
-layer = 20
-
-[node name="HudRoot" type="Control" parent="HudLayer" unique_id=29819780]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1484398957]
 process_mode = 2

@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ki4da")
 
 [node name="Background" type="ColorRect" parent="." unique_id=456074833]
@@ -23,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 localize_numeral_system = false
 mouse_filter = 2
+color = Color(0.627451, 0.627451, 0.54509807, 1)
 
 [node name="GameName" type="Label" parent="." unique_id=1592522052]
 layout_mode = 1
@@ -81,7 +83,6 @@ grow_horizontal = 0
 texture = ExtResource("3_cigvm")
 expand_mode = 1
 
-[connection signal="focus_entered" from="VBoxContainer/StartGameButton" to="VBoxContainer/StartGameButton" method="_on_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

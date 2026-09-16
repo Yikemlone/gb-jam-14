@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://7y2youv0qv8v" path="res://Scripts/UI/splash_screen.gd" id="1_h5jmx"]
 [ext_resource type="PackedScene" uid="uid://c712blpx0eaxx" path="res://Scenes/Startup/startup_animation.tscn" id="1_wwf30"]
+[ext_resource type="Texture2D" uid="uid://bj4vjiwxn8tta" path="res://Assets/Sprites/gb-jam-13-splash.png" id="3_gr1cn"]
 
 [node name="splash_screen" type="Node2D" unique_id=547473684]
 script = ExtResource("1_h5jmx")
 
 [node name="Startup Animation" parent="." unique_id=276442282 instance=ExtResource("1_wwf30")]
+
+[node name="GbJam13Splash" type="Sprite2D" parent="." unique_id=723218727]
+position = Vector2(80, 72)
+texture = ExtResource("3_gr1cn")

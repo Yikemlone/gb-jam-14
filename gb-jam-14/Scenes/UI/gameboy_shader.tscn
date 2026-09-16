@@ -4,10 +4,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wa718"]
 shader = ExtResource("1_mbqig")
-shader_parameter/colour0 = Color(0.608, 0.737, 0.059, 1)
-shader_parameter/colour1 = Color(0.545, 0.675, 0.059, 1)
-shader_parameter/colour2 = Color(0.188, 0.384, 0.188, 1)
-shader_parameter/colour3 = Color(0.059, 0.22, 0.059, 1)
+shader_parameter/colour0 = Color(0.9137255, 0.9372549, 0.9254902, 1)
+shader_parameter/colour1 = Color(0.627451, 0.627451, 0.54509807, 1)
+shader_parameter/colour2 = Color(0.33333334, 0.33333334, 0.40784314, 1)
+shader_parameter/colour3 = Color(0.12941177, 0.11764706, 0.1254902, 1)
 
 [node name="Gameboy Shader" type="ColorRect" unique_id=949928195]
 top_level = true
