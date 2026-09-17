@@ -5,10 +5,6 @@
 [node name="NPC" type="Node2D" unique_id=1490813960]
 script = ExtResource("1_nu8im")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1031150393]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1031150393]
 visible = false
-offset_left = 27.0
-offset_top = 21.0
-offset_right = 67.0
-offset_bottom = 61.0
-color = Color(0, 0, 0, 1)
+position = Vector2(80, 71)

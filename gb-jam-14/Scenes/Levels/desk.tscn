@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmy06bench4xg" path="res://Assets/Concept art/cashbox.png" id="2_c83fl"]
 [ext_resource type="Texture2D" uid="uid://b4ivu7y27bdkx" path="res://icon.svg" id="2_jidcf"]
 [ext_resource type="Texture2D" uid="uid://w072qwxtk0qq" path="res://Assets/Sprites/hand-sprite.png" id="3_bnixx"]
+[ext_resource type="Texture2D" uid="uid://p4yesc4tu778" path="res://Assets/Concept art/Counter.png" id="3_gj8d8"]
 [ext_resource type="Texture2D" uid="uid://52vng6m8klga" path="res://Assets/Concept art/bell.png" id="3_jidcf"]
 [ext_resource type="Texture2D" uid="uid://b7lwg8vnt54ki" path="res://Assets/Concept art/clock.png" id="5_n8g8b"]
 [ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="6_g0nxy"]
@@ -13,80 +14,117 @@
 font = ExtResource("6_g0nxy")
 font_size = 8
 
-
 [node name="Desk" type="Node2D" unique_id=839345135]
 script = ExtResource("1_3b01l")
 
-[node name="Background" type="ColorRect" parent="." unique_id=435693798]
-z_index = -4096
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=1334629339]
 offset_right = 160.0
 offset_bottom = 144.0
 color = Color(0.12941177, 0.11764706, 0.1254902, 1)
 
+[node name="Desk" type="TextureRect" parent="." unique_id=1547284316]
+z_index = 10
+offset_right = 160.0
+offset_bottom = 144.0
+texture = ExtResource("3_gj8d8")
+
 [node name="Buttons" type="Node2D" parent="." unique_id=667675849]
+z_index = 20
 
 [node name="CashRegisterButton" type="TextureButton" parent="Buttons" unique_id=514150978]
-offset_left = 30.0
-offset_top = 75.0
-offset_right = 62.0
-offset_bottom = 107.0
+offset_left = 31.0
+offset_top = 82.0
+offset_right = 63.0
+offset_bottom = 114.0
+mouse_filter = 2
 texture_normal = ExtResource("2_c83fl")
+metadata/_edit_use_anchors_ = true
 
 [node name="CustomerBookButton" type="TextureButton" parent="Buttons" unique_id=1833039539]
 offset_left = 2.0
-offset_top = 80.0
+offset_top = 92.0
 offset_right = 130.0
-offset_bottom = 208.0
+offset_bottom = 220.0
 scale = Vector2(0.19999999, 0.19999999)
+mouse_filter = 2
 texture_normal = ExtResource("2_jidcf")
+metadata/_edit_use_anchors_ = true
 
 [node name="BankStatementButton" type="TextureButton" parent="Buttons" unique_id=1437339178]
-offset_left = 68.0
-offset_top = 118.0
-offset_right = 196.0
-offset_bottom = 246.0
+offset_left = 70.0
+offset_top = 122.0
+offset_right = 198.0
+offset_bottom = 250.0
 scale = Vector2(0.16000003, 0.16000003)
+mouse_filter = 2
 texture_normal = ExtResource("2_jidcf")
+metadata/_edit_use_anchors_ = true
 
 [node name="CashButton" type="TextureButton" parent="Buttons" unique_id=1484095360]
-offset_left = 65.0
-offset_top = 77.99999
-offset_right = 193.0
-offset_bottom = 206.0
+offset_left = 66.0
+offset_top = 92.0
+offset_right = 194.0
+offset_bottom = 220.0
 scale = Vector2(0.21764706, 0.21764706)
+mouse_filter = 2
 texture_normal = ExtResource("2_jidcf")
+metadata/_edit_use_anchors_ = true
 
 [node name="BellButton" type="TextureButton" parent="Buttons" unique_id=622114255]
 offset_left = 15.0
 offset_top = -20.0
 offset_right = 31.0
 offset_bottom = 76.0
+mouse_filter = 2
 texture_normal = ExtResource("3_jidcf")
 stretch_mode = 5
-
+metadata/_edit_use_anchors_ = true
 
 [node name="CashRegister" type="CanvasLayer" parent="." unique_id=1733545451]
 
 [node name="PassBook" type="CanvasLayer" parent="." unique_id=1943598984]
+visible = false
+
+[node name="NameLabel" type="Label" parent="PassBook" unique_id=918273645]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 14.0
+text = "NAME"
+label_settings = SubResource("LabelSettings_2gj4k")
+metadata/_edit_use_anchors_ = true
+
+[node name="BalanceLabel" type="Label" parent="PassBook" unique_id=918273646]
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 110.0
+offset_bottom = 26.0
+text = "BAL: $0"
+label_settings = SubResource("LabelSettings_2gj4k")
+metadata/_edit_use_anchors_ = true
 
 [node name="BankStatement" type="CanvasLayer" parent="." unique_id=1754368053]
 
 [node name="Cash" type="CanvasLayer" parent="." unique_id=183244612]
 
 [node name="Clock" type="Sprite2D" parent="." unique_id=1809037983]
-position = Vector2(124, 96)
+z_index = 20
+position = Vector2(124, 106)
 texture = ExtResource("5_n8g8b")
 
 [node name="TimerLabel" type="Label" parent="." unique_id=850247840]
+z_index = 20
 offset_left = 111.0
-offset_top = 77.0
+offset_top = 88.0
 offset_right = 147.0
-offset_bottom = 91.0
+offset_bottom = 102.0
 text = "05:00"
 label_settings = SubResource("LabelSettings_2gj4k")
+metadata/_edit_use_anchors_ = true
 
 [node name="HandIcon" type="TextureRect" parent="." unique_id=835259181]
 visible = false
+z_index = 20
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -99,5 +137,6 @@ texture = ExtResource("3_bnixx")
 expand_mode = 1
 
 [node name="DialogManager" parent="." unique_id=1167941740 instance=ExtResource("7_pjq7g")]
+visible = false
 
 [connection signal="pressed" from="Buttons/BellButton" to="." method="_on_bell_button_pressed"]

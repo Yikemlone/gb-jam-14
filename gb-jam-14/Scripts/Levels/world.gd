@@ -4,11 +4,8 @@ extends Node2D
 @onready var entities: Node2D = $Entities
 
 const TOTAL_DAYS: int = 7
-# EXTRACTED: Canonical length lives in ShiftClock.DAY_SECONDS — change it there to increase time.
-# EXTRACTED: Kept here as alias so old references still resolve; passed to clock on creation.
 const DAY_SECONDS: float = 60.0
 
-# EXTRACTED: Forwarded clock signal — world re-emits clock.time_updated so day.gd/desk.gd stay unchanged.
 signal time_updated(text: String)
 
 var current_npc: Node2D
@@ -19,19 +16,8 @@ var steal_target: int = 0
 var weekly_steal_target: int = 0
 var stolen_total: int = 0
 var stolen_today: int = 0
-# Maybe useful
 var customers_served: int = 0
-# EXTRACTED: Owned timer instance — world handles gating, clock handles counting/formatting.
 var clock: ShiftClock
-# EXTRACTED: Back-compat proxy so day.gd/desk.gd can still read world.day_timer with no edits.
-var day_timer: float:
-	get:
-		if clock == null:
-			return 0.0
-		return clock.time_left
-	set(value):
-		if clock != null:
-			clock.time_left = value
 var last_verdict: String = ""
 var game_over: bool = false
 var game_won: bool = false
@@ -135,7 +121,7 @@ func load_level(level_name: String) -> void:
 func get_current_npc() -> Node2D:
 	return current_npc
 
-
+# Passed down to other levels so we can have world be the global state tracker
 func get_day_state() -> Dictionary:
 	return {
 		"current_day": current_day,

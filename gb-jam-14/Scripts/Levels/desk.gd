@@ -4,6 +4,8 @@ signal finished(next_level: String)
 
 @onready var dialog_manager: CanvasLayer = $DialogManager
 @onready var timer_label: Label = $TimerLabel
+@onready var passbook_name: Label = $PassBook/NameLabel
+@onready var passbook_balance: Label = $PassBook/BalanceLabel
 @onready var hand_icon: TextureRect = $HandIcon
 @onready var cash_register_button: TextureButton = $Buttons/CashRegisterButton
 @onready var customer_book_button: TextureButton = $Buttons/CustomerBookButton
@@ -32,8 +34,12 @@ func setup(npc_instance: Node2D) -> void:
 
 func _ready() -> void:
 	if world:
-		timer_label.text = world.get_shift_text(world.day_timer)
+		timer_label.text = world.get_shift_text(world.clock.time_left)
 		world.time_updated.connect(_on_time_updated)
+
+	if npc != null:
+		passbook_name.text = npc.npc_name
+		passbook_balance.text = "BAL: $%d" % npc.balance
 
 	for button in buttons:
 		button.focus_entered.connect(_on_button_focus.bind(button))
