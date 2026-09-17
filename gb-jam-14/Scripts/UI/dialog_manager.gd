@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 func advance_dialog() -> void:
 	if not is_dialog_active:
 		return
+	get_viewport().set_input_as_handled()
 	_play_confirm_sound()
 	if current_line_index < dialog_lines.size() - 1:
 		current_line_index += 1

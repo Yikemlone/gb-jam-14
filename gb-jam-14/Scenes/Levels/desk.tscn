@@ -15,6 +15,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_2gj4k"]
 font = ExtResource("6_g0nxy")
 font_size = 8
+font_color = Color(0, 0.62191296, 0.5238698, 1)
 
 [node name="Desk" type="Node2D" unique_id=839345135]
 script = ExtResource("1_3b01l")
@@ -34,19 +35,19 @@ texture = ExtResource("2_eor0o")
 z_index = 20
 
 [node name="CashRegisterButton" type="TextureButton" parent="Buttons" unique_id=514150978]
-offset_left = 3.0
+offset_left = 2.0
 offset_top = 66.0
-offset_right = 35.0
+offset_right = 34.0
 offset_bottom = 98.0
 mouse_filter = 2
 texture_normal = ExtResource("2_c83fl")
 metadata/_edit_use_anchors_ = true
 
 [node name="CustomerBookButton" type="TextureButton" parent="Buttons" unique_id=1833039539]
-offset_left = 129.0
-offset_top = 86.0
-offset_right = 161.0
-offset_bottom = 118.0
+offset_left = 105.0
+offset_top = 84.0
+offset_right = 137.0
+offset_bottom = 116.0
 mouse_filter = 2
 texture_normal = ExtResource("4_jng6f")
 metadata/_edit_use_anchors_ = true
@@ -61,10 +62,11 @@ texture_normal = ExtResource("5_pqwsb")
 metadata/_edit_use_anchors_ = true
 
 [node name="CashButton" type="TextureButton" parent="Buttons" unique_id=1484095360]
-offset_left = 64.0
-offset_top = 73.0
-offset_right = 96.0
-offset_bottom = 105.0
+visible = false
+offset_left = 65.0
+offset_top = 78.0
+offset_right = 97.0
+offset_bottom = 110.0
 mouse_filter = 2
 texture_normal = ExtResource("6_fn7ut")
 
@@ -79,43 +81,107 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="CashRegister" type="CanvasLayer" parent="." unique_id=1733545451]
+visible = false
+
+[node name="Square" type="ColorRect" parent="CashRegister" unique_id=2000000002]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 144.0
+offset_bottom = 130.0
+
+[node name="BackButton" type="Button" parent="CashRegister" unique_id=2000000003]
+offset_left = 60.0
+offset_top = 108.0
+offset_right = 100.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 8
+text = "BACK"
 
 [node name="PassBook" type="CanvasLayer" parent="." unique_id=1943598984]
 visible = false
 
+[node name="Square" type="ColorRect" parent="PassBook" unique_id=2000000011]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 144.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 1)
+
 [node name="NameLabel" type="Label" parent="PassBook" unique_id=918273645]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 110.0
-offset_bottom = 14.0
+z_index = 1
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 136.0
+offset_bottom = 34.0
 text = "NAME"
 label_settings = SubResource("LabelSettings_2gj4k")
 metadata/_edit_use_anchors_ = true
 
 [node name="BalanceLabel" type="Label" parent="PassBook" unique_id=918273646]
-offset_left = 2.0
-offset_top = 14.0
-offset_right = 110.0
-offset_bottom = 26.0
+z_index = 1
+offset_left = 24.0
+offset_top = 36.0
+offset_right = 136.0
+offset_bottom = 48.0
 text = "BAL: $0"
 label_settings = SubResource("LabelSettings_2gj4k")
 metadata/_edit_use_anchors_ = true
 
+[node name="BackButton" type="Button" parent="PassBook" unique_id=2000000012]
+z_index = 2
+offset_left = 60.0
+offset_top = 108.0
+offset_right = 100.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 8
+text = "BACK"
+
 [node name="BankStatement" type="CanvasLayer" parent="." unique_id=1754368053]
+visible = false
+
+[node name="Square" type="ColorRect" parent="BankStatement" unique_id=2000000005]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 144.0
+offset_bottom = 130.0
+
+[node name="BackButton" type="Button" parent="BankStatement" unique_id=2000000006]
+offset_left = 60.0
+offset_top = 108.0
+offset_right = 100.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 8
+text = "BACK"
 
 [node name="Cash" type="CanvasLayer" parent="." unique_id=183244612]
+visible = false
+
+[node name="Square" type="ColorRect" parent="Cash" unique_id=2000000008]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 144.0
+offset_bottom = 130.0
+
+[node name="BackButton" type="Button" parent="Cash" unique_id=2000000009]
+offset_left = 60.0
+offset_top = 108.0
+offset_right = 100.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 8
+text = "BACK"
 
 [node name="Clock" type="Sprite2D" parent="." unique_id=1809037983]
+visible = false
 z_index = 20
 position = Vector2(121, 91)
 texture = ExtResource("5_n8g8b")
 
 [node name="TimerLabel" type="Label" parent="." unique_id=850247840]
 z_index = 20
-offset_left = 108.0
-offset_top = 71.0
-offset_right = 144.0
-offset_bottom = 85.0
+offset_left = 115.0
+offset_top = 63.0
+offset_right = 151.0
+offset_bottom = 77.0
 text = "05:00"
 label_settings = SubResource("LabelSettings_2gj4k")
 metadata/_edit_use_anchors_ = true

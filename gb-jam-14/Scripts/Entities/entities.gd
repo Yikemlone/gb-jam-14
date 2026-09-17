@@ -10,7 +10,7 @@ const ROSTER: Array = [
 	{"id": "jojo", "name": "Jojo", "face": preload("res://Assets/Concept art/pomp_youth.png"), "position_y": 71.0, "sound_effect": PLACEHOLDER_SOUND_EFFECT, "dialog_set": preload("res://Resources/Dialog/jojo_dialog2.tres")},
 	{"id": "steve", "name": "Steve", "face": preload("res://Assets/Concept art/steve.png"), "position_y": 75.0, "sound_effect": PLACEHOLDER_SOUND_EFFECT, "dialog_set": null},
 	{"id": "igor", "name": "Igor", "face": preload("res://Assets/Concept art/igor.png"), "position_y": 71.0, "sound_effect": PLACEHOLDER_SOUND_EFFECT, "dialog_set": null},
-	{"id": "susie", "name": "Susie", "face": preload("res://Assets/Concept art/susie.png"), "position_y": 83.0, "sound_effect": PLACEHOLDER_SOUND_EFFECT, "dialog_set": preload("res://Resources/Dialog/susie_dialog.tres")},
+	{"id": "susie", "name": "Susie", "face": preload("res://Assets/Concept art/susie.png"), "position_y": 80.0, "sound_effect": PLACEHOLDER_SOUND_EFFECT, "dialog_set": preload("res://Resources/Dialog/susie_dialog.tres")},
 ]
 
 var npcs: Array[Node2D] = []
