@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NPCDialogSet" format=3 uid="uid://dpiudgf1grvyt"]
+
+[ext_resource type="Script" uid="uid://b34cc5jutievy" path="res://Scripts/Entities/npc_dialog_set.gd" id="1_x0g5s"]
+
+[resource]
+script = ExtResource("1_x0g5s")
+greetings = Array[String](["Yo"])
+closings = Array[String](["Chill"])
+metadata/_custom_type_script = "uid://b34cc5jutievy"

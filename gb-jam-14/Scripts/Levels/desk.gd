@@ -74,7 +74,7 @@ func _start_dialog() -> void:
 		dialog_manager.start_dialog(["..."])
 		return
 
-	dialog_manager.start_dialog(npc.dialogue)
+	dialog_manager.start_dialog(npc.dialogue, npc.sound_effect)
 
 
 func _on_dialog_complete() -> void:

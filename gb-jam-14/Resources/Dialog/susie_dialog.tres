@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NPCDialogSet" format=3 uid="uid://duk6xcifrnk3n"]
+
+[ext_resource type="Script" uid="uid://b34cc5jutievy" path="res://Scripts/Entities/npc_dialog_set.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+greetings = Array[String](["H-hi...", "Um, hello.", "Oh! Hi there..."])
+deposit_requests = Array[String]([""])
+closings = Array[String](["T-thank you.", "Sorry for the trouble.", "Okay... bye."])

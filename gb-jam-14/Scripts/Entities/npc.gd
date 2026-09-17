@@ -6,15 +6,20 @@ extends Node2D
 var context: NPCContext.Context = NPCContext.Context.WITHDRAW
 var balance: int = 100
 var context_amount: int = 20
+var sound_effect: AudioStream
+var dialog_set: NPCDialogSet
 
 @onready var sprite: Sprite2D = $Sprite2D
 
 var display_context: NPCContext.Type = NPCContext.Type.HIDDEN
 
 
-func setup_identity(p_name: String, p_texture: Texture2D) -> void:
-	npc_name = p_name
-	sprite.texture = p_texture
+func setup_identity(npc_name_value: String, face_texture: Texture2D, position_y: float = 71.0, sound_effect_stream: AudioStream = null, dialog_set_resource: NPCDialogSet = null) -> void:
+	npc_name = npc_name_value
+	sprite.texture = face_texture
+	sprite.position = Vector2(80.0, position_y)
+	sound_effect = sound_effect_stream
+	dialog_set = dialog_set_resource
 
 
 # Called every spawn to roll a fresh request + matching dialogue.
@@ -30,10 +35,16 @@ func randomize_visit() -> void:
 
 
 func build_dialogue() -> Array[String]:
+	var greeting_pool: Array[String] = DialogLines.GREETINGS
+	if dialog_set != null and not dialog_set.greetings.is_empty():
+		greeting_pool = dialog_set.greetings
+	var closing_pool: Array[String] = DialogLines.CLOSINGS
+	if dialog_set != null and not dialog_set.closings.is_empty():
+		closing_pool = dialog_set.closings
 	return [
-		DialogLines.GREETINGS.pick_random(),
-		NPCContext.get_request_options(context).pick_random().replace("{amt}", str(context_amount)),
-		DialogLines.CLOSINGS.pick_random(),
+		greeting_pool.pick_random(),
+		NPCContext.get_request_options(context, dialog_set).pick_random().replace("{amt}", str(context_amount)),
+		closing_pool.pick_random(),
 	]
 
 
