@@ -1,11 +1,7 @@
 extends Node2D
 
-<<<<<<< Updated upstream
 @export var npc_name: String = ""
 @export var dialogue: Array[String] = []
-=======
-@onready var sprite: Sprite2D = $Sprite2D
->>>>>>> Stashed changes
 
 var context: NPCContext.Context = NPCContext.Context.WITHDRAW
 var balance: int = 100
