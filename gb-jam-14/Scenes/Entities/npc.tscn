@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://vo1oye48562v"]
 
 [ext_resource type="Script" uid="uid://dhgfiejg7hj7p" path="res://Scripts/Entities/npc.gd" id="1_nu8im"]
+[ext_resource type="Texture2D" uid="uid://dti3yrwvwl7bd" path="res://Assets/Concept art/igor.png" id="2_x60he"]
 
 [node name="NPC" type="Node2D" unique_id=1490813960]
 script = ExtResource("1_nu8im")
 
+<<<<<<< Updated upstream
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1031150393]
 visible = false
 position = Vector2(80, 71)
+=======
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482662159]
+visible = false
+texture = ExtResource("2_x60he")
+>>>>>>> Stashed changes
