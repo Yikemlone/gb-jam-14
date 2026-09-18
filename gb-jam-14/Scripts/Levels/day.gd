@@ -5,6 +5,7 @@ signal finished(next_level: String)
 @onready var day_label: Label = $DayLabel
 @onready var register_label: Label = $RegisterLabel
 @onready var target_label: Label = $TargetLabel
+@onready var shift_label: Label = $ShiftLabel
 @onready var verdict_label: Label = $VerdictLabel
 @onready var start_hint: Label = $StartHint
 
@@ -23,6 +24,7 @@ func _populate() -> void:
 	day_label.text = "DAY %d" % state["current_day"]
 	register_label.text = "CASH: $%d" % state["register_money"]
 	target_label.text = "STEAL: $%d" % state["steal_target"]
+	shift_label.text = "SHIFT ENDS AT: %s" % state["shift_end_text"]
 
 	if state["last_verdict"] != "":
 		verdict_label.visible = true

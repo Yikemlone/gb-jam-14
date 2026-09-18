@@ -5,6 +5,9 @@ extends Node2D
 
 const TOTAL_DAYS: int = 7
 const DAY_SECONDS: float = 60.0
+const FIRST_DAY_SHIFT_LENGTH_MINUTES: int = 8 * 60
+const DAILY_SHIFT_REDUCTION_MINUTES: int = 60
+const MIN_SHIFT_LENGTH_MINUTES: int = 2 * 60
 
 signal time_updated(text: String)
 
@@ -54,6 +57,10 @@ func get_shift_text(seconds_left: float) -> String:
 	return clock.get_shift_text(seconds_left)
 
 
+func get_shift_end_text() -> String:
+	return clock.get_shift_end_text()
+
+
 # Update clock
 func _process(delta: float) -> void:
 	if not shift_active or game_over or current_level != "desk":
@@ -67,7 +74,7 @@ func start_game() -> void:
 	daily_targets.clear()
 	# Create stealing targets for each day
 	for day in range(1, TOTAL_DAYS + 1):
-		var target: int = 25 * day + randi() % 4 * 5
+		var target: int = _steal_target_for_day(day)
 		daily_targets.append(target)
 		weekly_steal_target += target
 	begin_new_day()
@@ -75,14 +82,32 @@ func start_game() -> void:
 	load_level("day")
 
 
+func _steal_target_for_day(day: int) -> int:
+	return 25 * day + _rand_step(4)
+
+
+func _register_money_for_day(day: int) -> int:
+	return maxi(100, 800 - day * 60 + _rand_step(8))
+
+
+func _shift_length_for_day(day: int) -> int:
+	return maxi(MIN_SHIFT_LENGTH_MINUTES, FIRST_DAY_SHIFT_LENGTH_MINUTES - (day - 1) * DAILY_SHIFT_REDUCTION_MINUTES)
+
+
+func _rand_step(steps: int) -> int:
+	return randi() % steps * 5
+
+
 func begin_new_day() -> void:
-	# Both amount to steal and cash register are divlisble by 5 so we can make the money logic easier for display
+	# Both amount to steal and cash box are divisible by 5 so we can make the money logic easier for display
 	# Ramping up the amount they need to steal
 	steal_target = daily_targets[current_day - 1]
-	# Reducing the amount in the cash register. 
-	register_money = maxi(100, 800 - current_day * 60 + randi() % 8 * 5)
+	# Reducing the amount in the cash box.
+	register_money = _register_money_for_day(current_day)
 	stolen_today = 0
 	customers_served = 0
+	# Ramping difficulty: one fewer hour each day (day 1 ends 5PM ... day 7 ends 11AM).
+	clock.shift_length_minutes = _shift_length_for_day(current_day)
 	clock.reset()
 	current_npc = entities.get_random_npc()
 	entities.hide_all_npcs()
@@ -133,6 +158,7 @@ func get_day_state() -> Dictionary:
 		"customers_served": customers_served,
 		"day_timer": clock.time_left,
 		"shift_text": clock.get_shift_text(clock.time_left),
+		"shift_end_text": clock.get_shift_end_text(),
 		"last_verdict": last_verdict,
 		"game_over": game_over,
 		"game_won": game_won,

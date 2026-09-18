@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1")
 greetings = Array[String](["H-hi...", "Um, hello.", "Oh! Hi there..."])
-deposit_requests = Array[String]([""])
 closings = Array[String](["T-thank you.", "Sorry for the trouble.", "Okay... bye."])

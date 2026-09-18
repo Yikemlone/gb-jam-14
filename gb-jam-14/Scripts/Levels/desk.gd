@@ -7,16 +7,16 @@ signal finished(next_level: String)
 @onready var passbook_name: Label = $PassBook/NameLabel
 @onready var passbook_balance: Label = $PassBook/BalanceLabel
 @onready var hand_icon: TextureRect = $HandIcon
-@onready var cash_register_button: TextureButton = $Buttons/CashRegisterButton
+@onready var cash_box_button: TextureButton = $Buttons/CashBoxButton
 @onready var customer_book_button: TextureButton = $Buttons/CustomerBookButton
 @onready var bank_statement_button: TextureButton = $Buttons/BankStatementButton
 @onready var cash_button: TextureButton = $Buttons/CashButton
 @onready var bell_button: TextureButton = $Buttons/BellButton
-@onready var cash_register_overlay: CanvasLayer = $CashRegister
+@onready var cash_box_overlay: CanvasLayer = $CashBox
 @onready var pass_book_overlay: CanvasLayer = $PassBook
 @onready var bank_statement_overlay: CanvasLayer = $BankStatement
 @onready var cash_overlay: CanvasLayer = $Cash
-@onready var cash_register_back_button: Button = $CashRegister/BackButton
+@onready var cash_box_back_button: Button = $CashBox/BackButton
 @onready var pass_book_back_button: Button = $PassBook/BackButton
 @onready var bank_statement_back_button: Button = $BankStatement/BackButton
 @onready var cash_back_button: Button = $Cash/BackButton
@@ -31,27 +31,9 @@ var world
 var _dialog_started: bool = false
 var _invoking_button: TextureButton = null
 
-@onready var buttons: Array[TextureButton] = [
-	bell_button,
-	customer_book_button,
-	bank_statement_button,
-	cash_button,
-	cash_register_button
-]
-
-@onready var overlays: Array[CanvasLayer] = [
-	cash_register_overlay,
-	pass_book_overlay,
-	bank_statement_overlay,
-	cash_overlay
-]
-
-@onready var overlay_back_buttons: Array[Button] = [
-	cash_register_back_button,
-	pass_book_back_button,
-	bank_statement_back_button,
-	cash_back_button
-]
+var buttons: Array[TextureButton] = []
+var overlays: Array[CanvasLayer] = []
+var overlay_back_buttons: Array[Button] = []
 
 
 func setup(npc_instance: Node2D) -> void:
@@ -59,32 +41,82 @@ func setup(npc_instance: Node2D) -> void:
 
 
 func _ready() -> void:
+	_collect_controls()
+	_init_clock()
+	_init_passbook()
+	_lock_buttons()
+	_connect_hand_icon_tracking()
+	_connect_overlay_buttons()
+	_start_customer_interaction()
+
+
+func _collect_controls() -> void:
+	buttons = [
+		bell_button,
+		customer_book_button,
+		bank_statement_button,
+		cash_button,
+		cash_box_button
+	]
+	overlays = [
+		cash_box_overlay,
+		pass_book_overlay,
+		bank_statement_overlay,
+		cash_overlay
+	]
+	overlay_back_buttons = [
+		cash_box_back_button,
+		pass_book_back_button,
+		bank_statement_back_button,
+		cash_back_button
+	]
+
+
+func _init_clock() -> void:
 	if world:
 		timer_label.text = world.get_shift_text(world.clock.time_left)
 		world.time_updated.connect(_on_time_updated)
 
+
+func _init_passbook() -> void:
 	if npc != null:
 		passbook_name.text = npc.npc_name
 		passbook_balance.text = "BAL: $%d" % npc.balance
 
+
+func _lock_buttons() -> void:
 	for button in buttons:
-		button.focus_entered.connect(_on_button_focus.bind(button))
-		button.resized.connect(_on_button_resized.bind(button))
 		button.disabled = true
 
-	for back_button in overlay_back_buttons:
-		back_button.focus_entered.connect(_on_button_focus.bind(back_button))
-		back_button.resized.connect(_on_button_resized.bind(back_button))
 
-	cash_register_button.pressed.connect(_show_cash_register)
+func _unlock_buttons() -> void:
+	for button in buttons:
+		button.disabled = false
+
+
+func _connect_hand_icon_tracking() -> void:
+	_track_focus_for_hand_icon(buttons)
+	_track_focus_for_hand_icon(overlay_back_buttons)
+
+
+func _track_focus_for_hand_icon(controls: Array) -> void:
+	for control in controls:
+		control.focus_entered.connect(_on_button_focus.bind(control))
+		control.resized.connect(_on_button_resized.bind(control))
+
+
+func _connect_overlay_buttons() -> void:
+	cash_box_button.pressed.connect(_show_cash_box)
 	customer_book_button.pressed.connect(_show_pass_book)
 	bank_statement_button.pressed.connect(_show_bank_statement)
 	cash_button.pressed.connect(_show_cash)
 	for back_button in overlay_back_buttons:
 		back_button.pressed.connect(_hide_overlays)
-
-	_set_vertical_focus_navigation()
 	dialog_manager.dialog_complete.connect(_on_dialog_complete)
+
+
+func _start_customer_interaction() -> void:
+	_set_vertical_focus_navigation()
 	call_deferred("_start_dialog")
 
 
@@ -98,14 +130,8 @@ func _set_vertical_focus_navigation() -> void:
 		if button.visible:
 			focusable_buttons.append(button)
 	for i in range(focusable_buttons.size()):
-		if i > 0:
-			focusable_buttons[i].focus_neighbor_top = focusable_buttons[i - 1].get_path()
-		else:
-			focusable_buttons[i].focus_neighbor_top = NodePath("")
-		if i < focusable_buttons.size() - 1:
-			focusable_buttons[i].focus_neighbor_bottom = focusable_buttons[i + 1].get_path()
-		else:
-			focusable_buttons[i].focus_neighbor_bottom = NodePath("")
+		focusable_buttons[i].focus_neighbor_top = focusable_buttons[i - 1].get_path() if i > 0 else NodePath("")
+		focusable_buttons[i].focus_neighbor_bottom = focusable_buttons[i + 1].get_path() if i < focusable_buttons.size() - 1 else NodePath("")
 
 
 func _start_dialog() -> void:
@@ -122,16 +148,15 @@ func _start_dialog() -> void:
 
 
 func _on_dialog_complete() -> void:
-	for button in buttons:
-		button.disabled = false
+	_unlock_buttons()
 	_update_cash_button()
 	_set_vertical_focus_navigation()
-	cash_register_button.call_deferred("grab_focus")
+	cash_box_button.call_deferred("grab_focus")
 
 
 func _update_cash_button() -> void:
-	if npc != null and npc.context == NPCContext.Context.DEPOSIT:
-		if npc.context_amount > LARGE_DEPOSIT_THRESHOLD:
+	if npc != null and npc.transaction_type == NPCContext.Transaction.DEPOSIT:
+		if npc.transaction_amount > LARGE_DEPOSIT_THRESHOLD:
 			cash_button.texture_normal = LARGE_CASH_TEXTURE
 		else:
 			cash_button.texture_normal = SMALL_CASH_TEXTURE
@@ -146,9 +171,9 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-func _show_cash_register() -> void:
-	_populate_cash_register()
-	_show_overlay(cash_register_overlay, cash_register_back_button, cash_register_button)
+func _show_cash_box() -> void:
+	_populate_cash_box()
+	_show_overlay(cash_box_overlay, cash_box_back_button, cash_box_button)
 
 
 func _show_pass_book() -> void:
@@ -166,8 +191,8 @@ func _show_cash() -> void:
 	_show_overlay(cash_overlay, cash_back_button, cash_button)
 
 
-func _populate_cash_register() -> void:
-	pass # Future cash register sprites and buttons land here.
+func _populate_cash_box() -> void:
+	pass # Future cash box sprites and buttons land here.
 
 
 func _populate_pass_book() -> void:

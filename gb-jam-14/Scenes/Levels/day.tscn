@@ -37,6 +37,14 @@ offset_bottom = 68.0
 label_settings = SubResource("LabelSettings_p2g1x")
 horizontal_alignment = 1
 
+[node name="ShiftLabel" type="Label" parent="."]
+offset_top = 68.0
+offset_right = 160.0
+offset_bottom = 82.0
+text = "SHIFT ENDS AT: 5:00 PM"
+label_settings = SubResource("LabelSettings_p2g1x")
+horizontal_alignment = 1
+
 [node name="VerdictLabel" type="Label" parent="." unique_id=952921246]
 visible = false
 offset_top = 86.0

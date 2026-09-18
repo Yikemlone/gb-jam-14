@@ -15,7 +15,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_2gj4k"]
 font = ExtResource("6_g0nxy")
 font_size = 8
-font_color = Color(0, 0.62191296, 0.5238698, 1)
 
 [node name="Desk" type="Node2D" unique_id=839345135]
 script = ExtResource("1_3b01l")
@@ -34,7 +33,7 @@ texture = ExtResource("2_eor0o")
 [node name="Buttons" type="Node2D" parent="." unique_id=667675849]
 z_index = 20
 
-[node name="CashRegisterButton" type="TextureButton" parent="Buttons" unique_id=514150978]
+[node name="CashBoxButton" type="TextureButton" parent="Buttons" unique_id=514150978]
 offset_left = 2.0
 offset_top = 66.0
 offset_right = 34.0
@@ -44,9 +43,9 @@ texture_normal = ExtResource("2_c83fl")
 metadata/_edit_use_anchors_ = true
 
 [node name="CustomerBookButton" type="TextureButton" parent="Buttons" unique_id=1833039539]
-offset_left = 105.0
+offset_left = 99.0
 offset_top = 84.0
-offset_right = 137.0
+offset_right = 131.0
 offset_bottom = 116.0
 mouse_filter = 2
 texture_normal = ExtResource("4_jng6f")
@@ -80,20 +79,20 @@ texture_normal = ExtResource("3_jidcf")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="CashRegister" type="CanvasLayer" parent="." unique_id=1733545451]
+[node name="CashBox" type="CanvasLayer" parent="." unique_id=1733545451]
 visible = false
 
-[node name="Square" type="ColorRect" parent="CashRegister" unique_id=2000000002]
+[node name="Square" type="ColorRect" parent="CashBox" unique_id=2000000002]
 offset_left = 16.0
 offset_top = 14.0
 offset_right = 144.0
 offset_bottom = 130.0
 
-[node name="BackButton" type="Button" parent="CashRegister" unique_id=2000000003]
+[node name="BackButton" type="Button" parent="CashBox" unique_id=2000000003]
 offset_left = 60.0
 offset_top = 108.0
 offset_right = 100.0
-offset_bottom = 122.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 8
 text = "BACK"
 
