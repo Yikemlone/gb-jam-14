@@ -16,10 +16,10 @@ enum PileContext { BANK_VAULT, BANK_TAKE, TABLE_OFFER, TABLE_HAND }
 
 const BILL_TYPES_AVAILABLE: Array[int] = [50, 20, 10, 5]
 const CONTEXTS := {
-	PileContext.BANK_VAULT: {"title": "BOX", "hints": ["X:STEAL"], "primary": ""},
-	PileContext.BANK_TAKE: {"title": "BOX", "hints": ["ENT:TAKE", "X:STEAL"], "primary": "taken_out"},
-	PileContext.TABLE_OFFER: {"title": "TABLE", "hints": ["ENT:PUT IN", "X:STEAL"], "primary": "put_in"},
-	PileContext.TABLE_HAND: {"title": "HAND", "hints": ["ENT:GIVE", "X:STEAL"], "primary": "handed_over"},
+	PileContext.BANK_VAULT: {"title": "BOX", "hints": [], "primary": ""},
+	PileContext.BANK_TAKE: {"title": "BOX", "hints": [], "primary": "taken_out"},
+	PileContext.TABLE_OFFER: {"title": "TABLE", "hints": [], "primary": "put_in"},
+	PileContext.TABLE_HAND: {"title": "HAND", "hints": [], "primary": "handed_over"},
 }
 const BOX_CONTEXTS := {
 	NPCContext.Transaction.DEPOSIT: PileContext.BANK_VAULT,

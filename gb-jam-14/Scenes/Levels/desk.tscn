@@ -197,7 +197,10 @@ text = "05:00"
 label_settings = SubResource("LabelSettings_2gj4k")
 metadata/_edit_use_anchors_ = true
 
-[node name="HandIcon" type="TextureRect" parent="." unique_id=835259181]
+[node name="HandLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HandIcon" type="TextureRect" parent="HandLayer" unique_id=835259181]
 script = ExtResource("11_hico")
 visible = false
 z_index = 20

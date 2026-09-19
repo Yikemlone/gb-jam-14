@@ -4,7 +4,7 @@ signal finished(next_level: String)
 
 @onready var dialog_manager: CanvasLayer = $DialogManager
 @onready var timer_label: Label = $TimerLabel
-@onready var hand_icon: HandIcon = $HandIcon
+@onready var hand_icon: HandIcon = $HandLayer/HandIcon
 @onready var cash_box_button: TextureButton = $Buttons/CashBoxButton
 @onready var customer_book_button: TextureButton = $Buttons/CustomerBookButton
 @onready var bank_statement_button: TextureButton = $Buttons/BankStatementButton
