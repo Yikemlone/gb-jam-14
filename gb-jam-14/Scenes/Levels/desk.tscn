@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://vok8xmkfccy" path="res://Assets/Concept art/bitta cash bitta change.png" id="6_fn7ut"]
 [ext_resource type="FontFile" uid="uid://dx73sdghq4d41" path="res://Fonts/game-boy-startup-font.otf" id="6_g0nxy"]
 [ext_resource type="PackedScene" uid="uid://cjo6nl52mb55g" path="res://Scenes/UI/dialog_manager.tscn" id="7_pjq7g"]
+[ext_resource type="Script" path="res://Scripts/Levels/desk_overlay.gd" id="8_dov"]
+[ext_resource type="Script" path="res://Scripts/Levels/cash_pile_overlay.gd" id="9_pov"]
+[ext_resource type="Script" path="res://Scripts/Levels/info_overlay.gd" id="10_iov"]
+[ext_resource type="Script" path="res://Scripts/Levels/hand_icon.gd" id="11_hico"]
+[ext_resource type="Script" path="res://Scripts/Levels/pass_book_overlay.gd" id="12_pbov"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gj4k"]
 font = ExtResource("6_g0nxy")
@@ -80,6 +85,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="CashBox" type="CanvasLayer" parent="." unique_id=1733545451]
+script = ExtResource("9_pov")
 visible = false
 
 [node name="Square" type="ColorRect" parent="CashBox" unique_id=2000000002]
@@ -87,6 +93,7 @@ offset_left = 16.0
 offset_top = 14.0
 offset_right = 144.0
 offset_bottom = 130.0
+color = Color(0, 0, 0, 1)
 
 [node name="BackButton" type="Button" parent="CashBox" unique_id=2000000003]
 offset_left = 60.0
@@ -97,6 +104,7 @@ theme_override_font_sizes/font_size = 8
 text = "BACK"
 
 [node name="PassBook" type="CanvasLayer" parent="." unique_id=1943598984]
+script = ExtResource("12_pbov")
 visible = false
 
 [node name="Square" type="ColorRect" parent="PassBook" unique_id=2000000011]
@@ -136,6 +144,7 @@ theme_override_font_sizes/font_size = 8
 text = "BACK"
 
 [node name="BankStatement" type="CanvasLayer" parent="." unique_id=1754368053]
+script = ExtResource("10_iov")
 visible = false
 
 [node name="Square" type="ColorRect" parent="BankStatement" unique_id=2000000005]
@@ -143,6 +152,7 @@ offset_left = 16.0
 offset_top = 14.0
 offset_right = 144.0
 offset_bottom = 130.0
+color = Color(0, 0, 0, 1)
 
 [node name="BackButton" type="Button" parent="BankStatement" unique_id=2000000006]
 offset_left = 60.0
@@ -153,6 +163,7 @@ theme_override_font_sizes/font_size = 8
 text = "BACK"
 
 [node name="Cash" type="CanvasLayer" parent="." unique_id=183244612]
+script = ExtResource("9_pov")
 visible = false
 
 [node name="Square" type="ColorRect" parent="Cash" unique_id=2000000008]
@@ -160,6 +171,7 @@ offset_left = 16.0
 offset_top = 14.0
 offset_right = 144.0
 offset_bottom = 130.0
+color = Color(0, 0, 0, 1)
 
 [node name="BackButton" type="Button" parent="Cash" unique_id=2000000009]
 offset_left = 60.0
@@ -186,6 +198,7 @@ label_settings = SubResource("LabelSettings_2gj4k")
 metadata/_edit_use_anchors_ = true
 
 [node name="HandIcon" type="TextureRect" parent="." unique_id=835259181]
+script = ExtResource("11_hico")
 visible = false
 z_index = 20
 anchors_preset = 1

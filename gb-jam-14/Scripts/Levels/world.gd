@@ -167,8 +167,7 @@ func get_day_state() -> Dictionary:
 
 func end_day() -> void:
 	entities.hide_all_npcs()
-	var shortfall := maxi(0, steal_target - stolen_today)
-	last_verdict = "OFF BY $%d" % shortfall
+	last_verdict = "STOLE $%d" % stolen_today
 
 	if current_day >= TOTAL_DAYS:
 		game_over = true
